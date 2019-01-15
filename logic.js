@@ -88,12 +88,12 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log("MINUTES TILL TRAIN: " + minutesAway);
 
     // // Next Train
-    var nextTime = moment().add(minutesAway, "minutes");
+    var nextTime = moment().add(minutesAway, "minutes").format("hh:mm a");
     console.log("ARRIVAL TIME: " + moment(nextTime).format("hh:mm"));
 
     var nextTimeRow = $('<tr>');
     var minutesAwayRow = $('<tr>');
-    
+
     var nextTimeCell = $('<td>').text(nextTime);
     var minutesAwayCell = $('<td>').text(minutesAway);
 
