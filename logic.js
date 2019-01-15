@@ -68,7 +68,7 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log(childSnapshot.val().firstTime);
     console.log(childSnapshot.val().frequency);
 
-    var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+    var firstTimeConverted = moment(train.firstTime, "HH:mm").subtract(1, "years");
     console.log(firstTimeConverted);
 
     // Current Time
@@ -80,11 +80,11 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log("DIFFERENCE IN TIME: " + diffTime);
 
     // // Time apart (remainder)
-    var remainder = diffTime % frequency;
+    var remainder = diffTime % train.frequency;
     console.log(remainder);
 
     // // Minute Until Train
-    var minutesAway = frequency - remainder;
+    var minutesAway = train.frequency - remainder;
     console.log("MINUTES TILL TRAIN: " + minutesAway);
 
     // // Next Train
