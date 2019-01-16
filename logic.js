@@ -17,8 +17,6 @@ var name = "";
 var destination = "";
 var firstTime = "";
 var frequency = "";
-// var nextTime = "";
-// var minutesAway = "";
 
 // Capture Button Click
 $("#add-user").on("click", function (event) {
@@ -89,7 +87,8 @@ database.ref().on("child_added", function (childSnapshot) {
 
     // // Next Train
     var nextTime = moment().add(minutesAway, "minutes").format("hh:mm a");
-    console.log("ARRIVAL TIME: " + moment(nextTime).format("hh:mm"));
+    //console.log("ARRIVAL TIME: " + moment(nextTime).format("hh:mm"));
+    console.log("ARRIVAL TIME: " + nextTime);
 
     var nextTimeRow = $('<tr>');
     var minutesAwayRow = $('<tr>');
@@ -113,39 +112,4 @@ database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functi
     // var firstTrainTime = moment(snapshot.val().firstTime);
 
     // console.log("First train time= " + firstTrainTime);
-
-    //var tFrequency = 3;
-
-    // Time is 3:30 AM
-    //var firstTime = "03:30";
-
-    // First Time (pushed back 1 year to make sure it comes before current time)
-    // var firstTimeConverted = moment(firstTime, "HH:mm");
-    // console.log(firstTimeConverted);
-
-    // Current Time
-    // var currentTime = moment();
-    // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
-
-    // // Difference between the times
-    // var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-    // console.log("DIFFERENCE IN TIME: " + diffTime);
-
-    // // Time apart (remainder)
-    // var tRemainder = diffTime % tFrequency;
-    // console.log(tRemainder);
-
-    // // Minute Until Train
-    // var tMinutesTillTrain = tFrequency - tRemainder;
-    // console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
-
-    // // Next Train
-    // var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    // console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-
-    //  $("#name-display").append(snapshot.val().name);
-    //  $("#destination-display").append(snapshot.val().destination);
-    //  $("#firstTime-display").append(snapshot.val().firstTime);
-    //  $("#frequency-display").append(snapshot.val().frequency);
-    //console.log(firstTrainTime.diff(moment(), "minutes"));
 });
